@@ -89,7 +89,7 @@ yarn deploy
 
 ```
 
-🔏 Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
+🔏 Edit your smart contract `ConsumerRole.sol` in `packages/hardhat/contracts`
 
 📝 Edit your frontend `App.jsx` in `packages/react-app/src`
 
@@ -111,7 +111,7 @@ yarn deploy
 
 > React dev server, HardHat blockchain, deploy terminal, code IDE, and frontend browser.
 
-✏️ Make small changes to `YourContract.sol` and watch your app auto update!
+✏️ Make small changes to `ConsumerRole.sol` and watch your app auto update!
 
 
 🔁 You can `yarn deploy` any time and get a fresh new contract in the frontend:
@@ -138,7 +138,7 @@ Look for the [HardHat](https://hardhat.org) console.log() output in the `yarn ch
 
 ![image](https://user-images.githubusercontent.com/2653167/93687934-2f534b80-fa7f-11ea-84b2-c0ba99533dc2.png)
 
-> ⚗️ Spend some time tinkering with `YourContract.sol`
+> ⚗️ Spend some time tinkering with `ConsumerRole.sol`
 
 ---
 
@@ -151,7 +151,7 @@ Look for the [HardHat](https://hardhat.org) console.log() output in the `yarn ch
 
 📕 Read the docs: https://docs.soliditylang.org
 
-📚 Go through each topic from [solidity by example](https://solidity-by-example.org) editing `YourContract.sol` in **🏗 scaffold-eth**
+📚 Go through each topic from [solidity by example](https://solidity-by-example.org) editing `ConsumerRole.sol` in **🏗 scaffold-eth**
 
 - [Primitive Data Types](https://solidity-by-example.org/primitives/)
 - [Mappings](https://solidity-by-example.org/mapping/)
@@ -205,7 +205,7 @@ Look for the [HardHat](https://hardhat.org) console.log() output in the `yarn ch
 
 🏗 You'll notice the `<Contract />` component that displays the dynamic form as scaffolding for interacting with your contract.
 
-🔲 Try making a `<Button/>` that calls `writeContracts.YourContract.setPurpose("👋 Hello World")` to explore how your UI might work...
+🔲 Try making a `<Button/>` that calls `writeContracts.ConsumerRole.setPurpose("👋 Hello World")` to explore how your UI might work...
 
 💬 Wrap the call to `writeContracts` with a `tx()` helper that uses BlockNative's [Notify.js](https://www.blocknative.com/notify).
 
@@ -617,8 +617,8 @@ scaffold-eth includes the hardhat-tenderly plugin. When deploying to any of the 
 You can verify contracts as part of the `deploy.js` script. We have created a `tenderlyVerify()` helper function, which takes your contract name and its deployed address:
 ```
 await tenderlyVerify(
-  {contractName: "YourContract",
-   contractAddress: yourContract.address
+  {contractName: "ConsumerRole",
+   contractAddress: ConsumerRole.address
 })
 ```
 Make sure your target network is present in the hardhat networks config, then either update the default network in `hardhat.config.js` to your network of choice or run:
@@ -710,7 +710,7 @@ etherscan: {
 Verifying is simple, assuming you are verifying a contract that you have just deployed from your hardhat setup - you just need to run the verify script, passing constructor arguments as an array if necessary (there is an example commented out in the `deploy.js`):
 ```
 await run("verify:verify", {
-  address: yourContract.address,
+  address: ConsumerRole.address,
   // constructorArguments: args // If your contract has constructor arguments, you can pass them as an array
 })
 ```

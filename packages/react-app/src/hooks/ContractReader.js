@@ -10,12 +10,12 @@ const DEBUG = false;
 
   ~ How can I use? ~
 
-  const purpose = useContractReader(readContracts,"YourContract", "purpose")
+  const purpose = useContractReader(readContracts,"ConsumerRole", "purpose")
 
   ~ Features ~
 
   - Provide readContracts by loading contracts (see more on ContractLoader.js)
-  - Specify the name of the contract, in this case it is "YourContract"
+  - Specify the name of the contract, in this case it is "ConsumerRole"
   - Specify the name of the variable in the contract, in this case we keep track of "purpose" variable
 */
 

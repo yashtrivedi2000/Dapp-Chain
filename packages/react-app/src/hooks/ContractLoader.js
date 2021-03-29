@@ -20,9 +20,9 @@ import { useState, useEffect } from "react";
   - userProvider enables writing transactions into contracts
   - Example of keeping track of "purpose" variable by loading contracts into readContracts 
     and using ContractReader.js hook:
-    const purpose = useContractReader(readContracts,"YourContract", "purpose")
+    const purpose = useContractReader(readContracts,"ConsumerRole", "purpose")
   - Example of using setPurpose function from our contract and writing transactions by Transactor.js helper:
-    tx( writeContracts.YourContract.setPurpose(newPurpose) )
+    tx( writeContracts.ConsumerRole.setPurpose(newPurpose) )
 */
 
 const loadContract = (contractName, signer) => {

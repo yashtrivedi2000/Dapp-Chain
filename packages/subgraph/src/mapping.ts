@@ -1,8 +1,8 @@
 import { BigInt, Address } from "@graphprotocol/graph-ts"
 import {
-  YourContract,
+  ConsumerRole,
   SetPurpose
-} from "../generated/YourContract/YourContract"
+} from "../generated/ConsumerRole/ConsumerRole"
 import { Purpose, Sender } from "../generated/schema"
 
 export function handleSetPurpose(event: SetPurpose): void {
