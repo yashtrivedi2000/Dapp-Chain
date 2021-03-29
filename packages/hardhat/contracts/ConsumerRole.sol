@@ -30,7 +30,7 @@ contract ConsumerRole {
     }
 
     // Make account Consumer
-    function addConsumer(address account) public onlyConsumer {
+    function addConsumer(address account) public {
         _addConsumer(account);
     }
 
