@@ -50,4 +50,6 @@ contract ConsumerRole {
         consumers.remove(account);
         emit ConsumerRemoved(account);
     }
+
+    receive() external payable {}
 }
