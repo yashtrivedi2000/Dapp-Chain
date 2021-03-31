@@ -209,6 +209,9 @@ function App(props) {
           <Menu.Item key="/">
             <Link onClick={()=>{setRoute("/")}} to="/">ConsumerRole</Link>
           </Menu.Item>
+          <Menu.Item key="/manufacturer">
+            <Link onClick={()=>{setRoute("/manufacturer")}} to="/manufacturer">ManufacturerRole</Link>
+          </Menu.Item>
           
         </Menu>
 
@@ -227,13 +230,7 @@ function App(props) {
               address={address}
               blockExplorer={blockExplorer}
             />
-            <Contract
-              name="ManufacturerRole"
-              signer={userProvider.getSigner()}
-              provider={localProvider}
-              address={address}
-              blockExplorer={blockExplorer}
-            />
+  
 
 
             { /* uncomment for a second contract:
@@ -265,39 +262,25 @@ function App(props) {
               price={price}
             />
           </Route>
-          <Route path="/exampleui">
-            <ExampleUI
-              address={address}
-              userProvider={userProvider}
-              mainnetProvider={mainnetProvider}
-              localProvider={localProvider}
-              yourLocalBalance={yourLocalBalance}
-              price={price}
-              tx={tx}
-              writeContracts={writeContracts}
-              readContracts={readContracts}
-              purpose={purpose}
-              setPurposeEvents={setPurposeEvents}
-            />
-          </Route>
-          <Route path="/mainnetdai">
-            <Contract
-              name="DAI"
-              customContract={mainnetDAIContract}
+          <Route path="/manufacturer">
+          <Contract
+              name="ManufacturerRole"
               signer={userProvider.getSigner()}
-              provider={mainnetProvider}
+              provider={localProvider}
               address={address}
-              blockExplorer={"https://etherscan.io/"}
+              blockExplorer={blockExplorer}
             />
           </Route>
-          <Route path="/subgraph">
-            <Subgraph
-            subgraphUri={props.subgraphUri}
-            tx={tx}
-            writeContracts={writeContracts}
-            mainnetProvider={mainnetProvider}
+          <Route path="/supplychain">
+          <Contract
+              name="SupplyChain"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
             />
           </Route>
+          
         </Switch>
       </BrowserRouter>
 

@@ -11,11 +11,10 @@ contract ConsumerRole {
 
     event ConsumerAdded(address indexed account);
     event ConsumerRemoved(address indexed account);
-    address owner;
+
     Roles.Role private consumers;
 
     constructor() {
-        owner = msg.sender;
         _addConsumer(msg.sender);
     }
 
@@ -30,9 +29,9 @@ contract ConsumerRole {
         return consumers.has(account);
     }
 
-    function isOwner() public view returns (address) {
-        return owner;
-    }
+    // function isOwner() public view returns (address) {
+    //     return msg.sender;
+    // }
 
     // Make account Consumer
     function addConsumer(address account) public {
