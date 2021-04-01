@@ -36,7 +36,7 @@ import { INFURA_ID, DAI_ADDRESS, DAI_ABI, NETWORK, NETWORKS } from "./constants"
 
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS['localhost']; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS['rinkeby']; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true
@@ -211,6 +211,9 @@ function App(props) {
           </Menu.Item>
           <Menu.Item key="/manufacturer">
             <Link onClick={()=>{setRoute("/manufacturer")}} to="/manufacturer">ManufacturerRole</Link>
+          </Menu.Item>
+          <Menu.Item key="/supplychain">
+            <Link onClick={()=>{setRoute("/supplychain")}} to="/supplychain">ManufacturerRole</Link>
           </Menu.Item>
           
         </Menu>
