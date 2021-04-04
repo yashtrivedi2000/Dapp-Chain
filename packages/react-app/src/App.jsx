@@ -212,8 +212,11 @@ function App(props) {
           <Menu.Item key="/manufacturer">
             <Link onClick={()=>{setRoute("/manufacturer")}} to="/manufacturer">ManufacturerRole</Link>
           </Menu.Item>
+          <Menu.Item key="/distributer">
+            <Link onClick={()=>{setRoute("/distributer")}} to="/distributer">DistributerRole</Link>
+          </Menu.Item>
           <Menu.Item key="/supplychain">
-            <Link onClick={()=>{setRoute("/supplychain")}} to="/supplychain">ManufacturerRole</Link>
+            <Link onClick={()=>{setRoute("/supplychain")}} to="/supplychain">SupplyChain</Link>
           </Menu.Item>
           
         </Menu>
@@ -274,6 +277,17 @@ function App(props) {
               blockExplorer={blockExplorer}
             />
           </Route>
+
+          <Route path="/distributer">
+          <Contract
+              name="DistributerRole"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+            />
+          </Route>
+
           <Route path="/supplychain">
           <Contract
               name="SupplyChain"

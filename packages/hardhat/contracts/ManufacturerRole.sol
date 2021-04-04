@@ -4,6 +4,8 @@ pragma solidity >=0.6.0 <0.9.0;
 import "hardhat/console.sol";
 import "./Roles.sol";
 
+//import "@openzeppelin/contracts/access/Ownable.sol"; //https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
+
 contract ManufacturerRole {
     using Roles for Roles.Role;
 
@@ -28,7 +30,7 @@ contract ManufacturerRole {
     }
 
     // Make account Manufacturer
-    function addManufacturer(address account) public onlyManufacturer {
+    function addManufacturer(address account) public {
         _addManufacturer(account);
     }
 
