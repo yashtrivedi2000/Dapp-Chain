@@ -1,59 +1,53 @@
-pragma solidity >=0.6.0 <0.9.0;
-//SPDX-License-Identifier: MIT
+pragma solidity >=0.4.24;
 
-import "hardhat/console.sol";
+// Import the library 'Roles'
 import "./Roles.sol";
 
-//import "@openzeppelin/contracts/access/Ownable.sol"; //https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
-
+// Define a contract 'ConsumerRole' to manage this role - add, remove, check
 contract ConsumerRole {
-    using Roles for Roles.Role;
+  using Roles for Roles.Role;
+  // Define 2 events, one for Adding, and other for Removing
+  event ConsumerAdded(address indexed account);
+  event ConsumerRemoved(address indexed account);
 
-    event ConsumerAdded(address indexed account);
-    event ConsumerRemoved(address indexed account);
+  // Define a struct 'consumers' by inheriting from 'Roles' library, struct Role
+  Roles.Role private consumers;
+  // In the constructor make the address that deploys this contract the 1st consumer
+  constructor() public {
+    //_addConstructor(msg.sender);
+    _addConsumer(msg.sender);
+  }
 
-    Roles.Role private consumers;
+  // Define a modifier that checks to see if msg.sender has the appropriate role
+  modifier onlyConsumer() {
+    require(isConsumer(msg.sender));
+    _;
+  }
 
-    constructor() {
-        _addConsumer(msg.sender);
-    }
+  // Define a function 'isConsumer' to check this role
+  function isConsumer(address account) public view returns (bool) {
+    return consumers.has(account);
+  }
 
-    // Checks to see if msg.sender has the appropriate role
-    modifier onlyConsumer() {
-        require(isConsumer(msg.sender));
-        _;
-    }
+  // Define a function 'addConsumer' that adds this role
+  function addConsumer(address account) public onlyConsumer {
+    _addConsumer(account);
+  }
 
-    // Check if account is an Consumer account
-    function isConsumer(address account) public view returns (bool) {
-        return consumers.has(account);
-    }
+  // Define a function 'renounceConsumer' to renounce this role
+  function renounceConsumer(address account) public {
+    _removeConsumer(account);
+  }
 
-    // function isOwner() public view returns (address) {
-    //     return msg.sender;
-    // }
+  // Define an internal function '_addConsumer' to add this role, called by 'addConsumer'
+  function _addConsumer(address account) internal {
+    consumers.add(account);
+    emit ConsumerAdded(account);
+  }
 
-    // Make account Consumer
-    function addConsumer(address account) public {
-        _addConsumer(account);
-    }
-
-    // Remove Consumer role from account
-    function renounceConsumer() public {
-        _removeConsumer(msg.sender);
-    }
-
-    // Internal Functions
-
-    function _addConsumer(address account) internal {
-        consumers.add(account);
-        emit ConsumerAdded(account);
-    }
-
-    function _removeConsumer(address account) internal {
-        consumers.remove(account);
-        emit ConsumerRemoved(account);
-    }
-
-    receive() external payable {}
+  // Define an internal function '_removeConsumer' to remove this role, called by 'removeConsumer'
+  function _removeConsumer(address account) internal {
+    consumers.remove(account);
+    emit ConsumerRemoved(account);
+  }
 }

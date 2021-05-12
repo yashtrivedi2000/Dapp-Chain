@@ -1,36 +1,44 @@
-pragma solidity >=0.6.0 <0.9.0;
-//SPDX-License-Identifier: MIT
+pragma solidity >=0.4.24;
 
-import "hardhat/console.sol";
-
+/**
+ * @title Roles
+ * @dev Library for managing addresses assigned to a Role.
+ */
 library Roles {
-    struct Role {
-        mapping(address => bool) bearer;
-    }
+  struct Role {
+    mapping (address => bool) bearer;
+  }
 
-    // Gives account access to role
-    function add(Role storage role, address account) internal {
-        require(account != address(0));
-        require(!has(role, account));
+  /**
+   * @dev give an account access to this role
+   */
+  function add(Role storage role, address account) internal {
+    require(account != address(0));
+    require(!has(role, account));
 
-        role.bearer[account] = true;
-    }
+    role.bearer[account] = true;
+  }
 
-    // Remove account access to role
-    function remove(Role storage role, address account) internal {
-        require(account != address(0));
-        require(has(role, account));
+  /**
+   * @dev remove an account's access to this role
+   */
+  function remove(Role storage role, address account) internal {
+    require(account != address(0));
+    require(has(role, account));
 
-        role.bearer[account] = false;
-    }
+    role.bearer[account] = false;
+  }
 
-    // Check if account has role
-    function has(Role storage role, address account)
-        internal
-        view
-        returns (bool)
-    {
-        require(account != address(0));
-        return role.bearer[account];
-    }
+  /**
+   * @dev check if an account has this role
+   * @return bool
+   */
+  function has(Role storage role, address account)
+    internal
+    view
+    returns (bool)
+  {
+    require(account != address(0));
+    return role.bearer[account];
+  }
 }

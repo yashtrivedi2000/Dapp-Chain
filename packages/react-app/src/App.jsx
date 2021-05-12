@@ -207,17 +207,14 @@ function App(props) {
           <Menu.Item key="/">
             <Link onClick={()=>{setRoute("/")}} to="/">ConsumerRole</Link>
           </Menu.Item>
-          <Menu.Item key="/manufacturer">
-            <Link onClick={()=>{setRoute("/manufacturer")}} to="/manufacturer">ManufacturerRole</Link>
+          <Menu.Item key="/distributor">
+            <Link onClick={()=>{setRoute("/distributor")}} to="/distributor">DistributorRole</Link>
           </Menu.Item>
-          <Menu.Item key="/distributer">
-            <Link onClick={()=>{setRoute("/distributer")}} to="/distributer">DistributerRole</Link>
+          <Menu.Item key="/farmer">
+            <Link onClick={()=>{setRoute("/farmer")}} to="/farmer">FarmerRole</Link>
           </Menu.Item>
-          <Menu.Item key="/product">
-            <Link onClick={()=>{setRoute("/product")}} to="/product">Product</Link>
-          </Menu.Item>
-          <Menu.Item key="/rawmaterialproviderrole">
-            <Link onClick={()=>{setRoute("/rawmaterialproviderrole")}} to="/rawmaterialproviderrole">Raw Material Provider</Link>
+          <Menu.Item key="/retailer">
+            <Link onClick={()=>{setRoute("/retailer")}} to="/retailer">RetailerRole</Link>
           </Menu.Item>
           <Menu.Item key="/supplychain">
             <Link onClick={()=>{setRoute("/supplychain")}} to="/supplychain">SupplyChain</Link>
@@ -272,9 +269,9 @@ function App(props) {
               price={price}
             />
           </Route>
-          <Route path="/manufacturer">
+          <Route path="/distributor">
           <Contract
-              name="ManufacturerRole"
+              name="DistributorRole"
               signer={userProvider.getSigner()}
               provider={localProvider}
               address={address}
@@ -282,9 +279,9 @@ function App(props) {
             />
           </Route>
 
-          <Route path="/distributer">
+          <Route path="/farmer">
           <Contract
-              name="DistributerRole"
+              name="FarmerRole"
               signer={userProvider.getSigner()}
               provider={localProvider}
               address={address}
@@ -301,9 +298,9 @@ function App(props) {
               blockExplorer={blockExplorer}
             />
           </Route>
-          <Route path="/product">
+          <Route path="/retailer">
           <Contract
-              name="Product"
+              name="RetailerRole"
               signer={userProvider.getSigner()}
               provider={localProvider}
               address={address}
