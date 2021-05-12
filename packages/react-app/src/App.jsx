@@ -88,9 +88,7 @@ function App(props) {
   let selectedChainId = userProvider && userProvider._network && userProvider._network.chainId
   if(DEBUG) console.log("🕵🏻‍♂️ selectedChainId:",selectedChainId)
 
-  // For more hooks, check out 🔗eth-hooks at: https://www.npmjs.com/package/eth-hooks
-
-  // The transactor wraps transactions and provides notificiations
+  
   const tx = Transactor(userProvider, gasPrice)
 
   // Faucet Tx can be used to send funds from the faucet
@@ -215,6 +213,12 @@ function App(props) {
           <Menu.Item key="/distributer">
             <Link onClick={()=>{setRoute("/distributer")}} to="/distributer">DistributerRole</Link>
           </Menu.Item>
+          <Menu.Item key="/product">
+            <Link onClick={()=>{setRoute("/product")}} to="/product">Product</Link>
+          </Menu.Item>
+          <Menu.Item key="/rawmaterialproviderrole">
+            <Link onClick={()=>{setRoute("/rawmaterialproviderrole")}} to="/rawmaterialproviderrole">Raw Material Provider</Link>
+          </Menu.Item>
           <Menu.Item key="/supplychain">
             <Link onClick={()=>{setRoute("/supplychain")}} to="/supplychain">SupplyChain</Link>
           </Menu.Item>
@@ -291,6 +295,24 @@ function App(props) {
           <Route path="/supplychain">
           <Contract
               name="SupplyChain"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+            />
+          </Route>
+          <Route path="/product">
+          <Contract
+              name="Product"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
+            />
+          </Route>
+          <Route path="/rawmaterialproviderrole">
+          <Contract
+              name="RawMaterialProviderRole"
               signer={userProvider.getSigner()}
               provider={localProvider}
               address={address}

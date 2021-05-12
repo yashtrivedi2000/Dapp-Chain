@@ -10,10 +10,11 @@ const main = async () => {
   console.log("\n\n 📡 Deploying...\n");
 
   //const ConsumerRole = await deploy("ConsumerRole")
-  const ManufacturerRole = await deploy("ManufacturerRole")
+  //const ManufacturerRole = await deploy("ManufacturerRole")
   //const SupplyChain = await deploy("SupplyChain")
-  const DistributerRole = await deploy("DistributerRole") // <-- add in constructor args like line 19 vvvv
-
+  //const DistributerRole = await deploy("DistributerRole") // <-- add in constructor args like line 19 vvvv
+  //const Product = await deploy("Product")
+  const RawMaterialProviderRole = await deploy("RawMaterialProviderRole")
   //const ConsumerRole = await ethers.getContractAt('ConsumerRole', "0xaAC799eC2d00C013f1F11c37E654e59B0429DF6A") //<-- if you want to instantiate a version of a contract at a specific address!
   //const secondContract = await deploy("SecondContract")
 
